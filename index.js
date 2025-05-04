@@ -4,8 +4,16 @@ const profileRoutes = require("./routes/profileRoutes");
 const scheduleRoutes = require("./routes/scheduleRoutes");
 
 const app = express();
-app.use(cors());
 app.use(express.json());
+
+// Configure CORS to allow requests from the deployed client
+const corsOptions = {
+  origin: 'https://your-client-url.vercel.app', // Replace with your deployed client URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
 
 // Tambahkan route default
 app.get("/", (req, res) => {
