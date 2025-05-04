@@ -8,7 +8,7 @@ app.use(express.json());
 
 // Configure CORS to allow requests from the deployed client
 const corsOptions = {
-  origin: 'https://your-client-url.vercel.app', // Replace with your deployed client URL
+  origin: 'https://client-tutam9sbd.vercel.app', // Replace with your deployed client URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
