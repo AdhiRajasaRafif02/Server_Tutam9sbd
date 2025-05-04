@@ -1,13 +1,17 @@
 const express = require("express");
 const cors = require("cors");
-const { sequelize } = require("./models"); // ⬅️ ambil dari index.js model
-
+const { sequelize } = require("./models");
 const profileRoutes = require("./routes/profileRoutes");
 const scheduleRoutes = require("./routes/scheduleRoutes");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Tambahkan route default
+app.get("/", (req, res) => {
+  res.send("API is running!");
+});
 
 // Gunakan routes
 app.use("/api/profiles", profileRoutes);
@@ -18,6 +22,8 @@ sequelize.sync().then(() => {
   console.log("Database synced");
 });
 
-app.listen(5000, () => {
-  console.log("Server running on http://localhost:5000");
+// Pakai PORT dari env (penting untuk Vercel)
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
