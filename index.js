@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const { sequelize } = require("./models");
 const profileRoutes = require("./routes/profileRoutes");
 const scheduleRoutes = require("./routes/scheduleRoutes");
 
@@ -16,11 +15,6 @@ app.get("/", (req, res) => {
 // Gunakan routes
 app.use("/api/profiles", profileRoutes);
 app.use("/api/schedules", scheduleRoutes);
-
-// Sync DB
-sequelize.sync().then(() => {
-  console.log("Database synced");
-});
 
 // Pakai PORT dari env (penting untuk Vercel)
 const PORT = process.env.PORT || 5000;

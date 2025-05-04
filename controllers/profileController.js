@@ -3,7 +3,7 @@ const { Profile } = require("../models");
 // Ambil semua profil
 exports.getAllProfiles = async (req, res) => {
   try {
-    const profiles = await Profile.findAll();
+    const profiles = await Profile.getAll();
     res.json(profiles);
   } catch (err) {
     console.error("Error fetching profiles:", err);
